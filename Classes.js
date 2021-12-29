@@ -75,9 +75,10 @@ class Movie {
     else console.log("Rating is invalid");
   };
   averageRating = () => {
-    let Average = 0;
-    this.rating.forEach((rate) => (Average += rate));
+    const Average = this.rating.reduce((prev, curr) => prev + curr);
     return Average / this.rating.length;
+    // this.rating.forEach((rate) => (Average += rate));
+    // return Average / this.rating.length;
     // for (let i = 0; i < this.rating.length; i++) {
     //   Average = this.rating[i] + Average;
     // }
