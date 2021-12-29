@@ -18,7 +18,28 @@
  */
 class Person {
   // continue the code here
+  constructor(firstName, lastName, gender, birthYear, interests) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+    this.birthYear = birthYear;
+    this.interests = [];
+  }
+  printName = () => {
+    console.log(
+      `First name is ${this.firstName} and last name is ${this.lastName}`
+    );
+  };
+  calculateAge = (currentYear) => currentYear - this.birthYear;
+  addInterest = (newInterest) => {
+    this.interests.push(newInterest);
+    return this.interests;
+  };
 }
+const Taher = new Person("Taher", "Naqi", "male", "1994", ["plaay"]);
+Taher.printName();
+console.log(Taher.calculateAge(2021));
+console.log(Taher.addInterest("Playing Games"));
 
 /** (Question 2): (15000 Points)
  * 1. Write a class `Movie`, give it the following properties
@@ -43,7 +64,31 @@ class Person {
 
 class Movie {
   // continue the code here
+  constructor(title, duration, genre, rating = []) {
+    this.title = title;
+    this.duration = duration;
+    this.gender = genre;
+    this.rating = rating;
+  }
+  rate = (rating) => {
+    if (rating > 0 && rating <= 10) this.rating.push(rating);
+    else console.log("Rating is invalid");
+  };
+  averageRating = () => {
+    let Average = 0;
+    this.rating.forEach((rate) => (Average += rate));
+    return Average / this.rating.length;
+    // for (let i = 0; i < this.rating.length; i++) {
+    //   Average = this.rating[i] + Average;
+    // }
+  };
 }
+
+const spiderman = new Movie("Spiderman", 40, "action");
+spiderman.rate(10);
+spiderman.rate(10);
+spiderman.rate(-1);
+console.log(spiderman.averageRating());
 
 /** (Question 3): (1000 Points)
  * 1. Create a class `Actor` that inherits `Person`, and adds the following properties
@@ -55,3 +100,13 @@ class Movie {
  */
 
 // write the class here
+class Actor extends Person {
+  movies = [];
+
+  addMovie = (movie) => this.movies.push(movie);
+}
+const johnyDep = new Actor("jhony", "Dep", "male", 1968);
+
+// johnyDep.addMovie("added movie");
+// johnyDep.addMovie("2nd movies");
+// console.log(johnyDep.movies);
